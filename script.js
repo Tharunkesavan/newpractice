@@ -2002,3 +2002,11 @@ openPage(
 // The function displays local products if the API fails.
 
 loadProductsFromAPI();
+
+// Feature Practice
+
+function showMessage() {
+    console.log("My first Git branch is working!");
+}
+
+showMessage();
