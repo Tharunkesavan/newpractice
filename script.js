@@ -17,7 +17,7 @@ const STORAGE_KEYS = {
 let products = [
     {
         id: 1,
-        name: "Email Marketing",
+        name: "Email ",
         description: "Send useful updates, offers, and campaign emails to customers.",
         price: 499,
         category: "Marketing",
