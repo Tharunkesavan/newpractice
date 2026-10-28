@@ -15,3 +15,5 @@ A frontend website project built using HTML, CSS, and JavaScript.
 * CSS
 * JavaScript
 * Git and GitHub
+
+
