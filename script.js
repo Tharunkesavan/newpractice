@@ -1,120 +1,17 @@
 "use strict";
 
-// ========================================
-// 1. STORAGE KEYS
-// ========================================
+/* =========================================
+   1. CONFIGURATION AND STORAGE
+========================================= */
 
 const STORAGE_KEYS = {
     preferences: "shopifive_preferences_v1",
     submissions: "shopifive_demo_submissions_v1"
 };
 
-
-// ========================================
-// 2. PRODUCT DATA
-// ========================================
-
-let products = [
-    {
-        id: 1,
-        name: "Email ",
-        description: "Send useful updates, offers, and campaign emails to customers.",
-        price: 499,
-        category: "Marketing",
-        icon: "✉",
-        featured: 1
-    },
-    {
-        id: 2,
-        name: "SMS Campaigns",
-        description: "Plan timely customer messages and promotional campaigns.",
-        price: 399,
-        category: "Marketing",
-        icon: "⌁",
-        featured: 2
-    },
-    {
-        id: 3,
-        name: "SEO Tools",
-        description: "Organise search optimisation tasks and improve product visibility.",
-        price: 599,
-        category: "Marketing",
-        icon: "⌕",
-        featured: 3
-    },
-    {
-        id: 4,
-        name: "Online Store",
-        description: "Build and organise a storefront for your products.",
-        price: 999,
-        category: "Store",
-        icon: "▧",
-        featured: 4
-    },
-    {
-        id: 5,
-        name: "Discounts and Coupons",
-        description: "Plan offers and discount codes for your customers.",
-        price: 299,
-        category: "Store",
-        icon: "%",
-        featured: 5
-    },
-    {
-        id: 6,
-        name: "Sales Analytics",
-        description: "Review sales activity and spot useful business patterns.",
-        price: 799,
-        category: "Analytics",
-        icon: "↗",
-        featured: 6
-    }
-];
-
-
-// ========================================
-// 3. RESOURCE DATA
-// ========================================
-
-const resources = [
-    {
-        id: 1,
-        title: "Getting started with your online store",
-        description: "A practical introduction to planning products, store pages, and the customer journey.",
-        category: "Learning",
-        readTime: "6 min read",
-        icon: "↗"
-    },
-    {
-        id: 2,
-        title: "A simple guide to ecommerce SEO",
-        description: "Learn the basics of product titles, useful descriptions, and search-friendly pages.",
-        category: "Learning",
-        readTime: "8 min read",
-        icon: "⌕"
-    },
-    {
-        id: 3,
-        title: "Payments and order support checklist",
-        description: "A checklist of common topics to review when planning a smoother order experience.",
-        category: "Support",
-        readTime: "4 min read",
-        icon: "✓"
-    },
-    {
-        id: 4,
-        title: "How growing stores organise their work",
-        description: "Explore a sample story about improving store operations and tracking progress.",
-        category: "Stories",
-        readTime: "5 min read",
-        icon: "▦"
-    }
-];
-
-
-// ========================================
-// 4. COMMON VARIABLES
-// ========================================
+const API_URL = "https://dummyjson.com/products?limit=30";
+const PRODUCTS_PER_PAGE = 6;
+const MAX_SUBMISSIONS = 100;
 
 const pageIds = [
     "home",
@@ -125,6 +22,125 @@ const pageIds = [
     "contact"
 ];
 
+
+/* =========================================
+   2. LOCAL PRODUCT DATA
+========================================= */
+
+const localProducts = [
+    {
+        id: 1,
+        name: "Email Marketing",
+        description:
+            "Send useful updates, offers, and campaign emails to customers.",
+        price: 499,
+        category: "Marketing",
+        icon: "✉",
+        featured: 1
+    },
+    {
+        id: 2,
+        name: "SMS Campaigns",
+        description:
+            "Plan timely customer messages and promotional campaigns.",
+        price: 399,
+        category: "Marketing",
+        icon: "⌁",
+        featured: 2
+    },
+    {
+        id: 3,
+        name: "SEO Tools",
+        description:
+            "Organise search optimisation tasks and improve product visibility.",
+        price: 599,
+        category: "Marketing",
+        icon: "⌕",
+        featured: 3
+    },
+    {
+        id: 4,
+        name: "Online Store",
+        description:
+            "Build and organise a storefront for your products.",
+        price: 999,
+        category: "Store",
+        icon: "▧",
+        featured: 4
+    },
+    {
+        id: 5,
+        name: "Discounts and Coupons",
+        description:
+            "Plan offers and discount codes for your customers.",
+        price: 299,
+        category: "Store",
+        icon: "%",
+        featured: 5
+    },
+    {
+        id: 6,
+        name: "Sales Analytics",
+        description:
+            "Review sales activity and spot useful business patterns.",
+        price: 799,
+        category: "Analytics",
+        icon: "↗",
+        featured: 6
+    }
+];
+
+let products = localProducts.slice();
+
+
+/* =========================================
+   3. RESOURCE DATA
+========================================= */
+
+const resources = [
+    {
+        id: 1,
+        title: "Getting started with your online store",
+        description:
+            "A practical introduction to planning products, store pages, and the customer journey.",
+        category: "Learning",
+        readTime: "6 min read",
+        icon: "↗"
+    },
+    {
+        id: 2,
+        title: "A simple guide to ecommerce SEO",
+        description:
+            "Learn the basics of product titles, useful descriptions, and search-friendly pages.",
+        category: "Learning",
+        readTime: "8 min read",
+        icon: "⌕"
+    },
+    {
+        id: 3,
+        title: "Payments and order support checklist",
+        description:
+            "A checklist of common topics to review when planning a smoother order experience.",
+        category: "Support",
+        readTime: "4 min read",
+        icon: "✓"
+    },
+    {
+        id: 4,
+        title: "How growing stores organise their work",
+        description:
+            "Explore a sample story about improving store operations and tracking progress.",
+        category: "Stories",
+        readTime: "5 min read",
+        icon: "▦"
+    }
+];
+
+
+/* =========================================
+   4. DOM ELEMENTS AND STATE
+========================================= */
+
 const pages = document.querySelectorAll(".page");
 const navLinks = document.querySelectorAll("[data-page]");
 const goButtons = document.querySelectorAll("[data-go]");
@@ -133,16 +149,70 @@ const mainNav = document.getElementById("mainNav");
 const menuToggle = document.getElementById("menuToggle");
 const toast = document.getElementById("toast");
 
+const productList = document.getElementById("productList");
+const productCount = document.getElementById("productCount");
+const productSearch = document.getElementById("productSearch");
+const productSort = document.getElementById("productSort");
+const productEmpty = document.getElementById("productEmpty");
+const pagination = document.getElementById("pagination");
+const prevPage = document.getElementById("prevPage");
+const nextPage = document.getElementById("nextPage");
+const pageNumbers = document.getElementById("pageNumbers");
+
+const productFilterButtons =
+    document.querySelectorAll("[data-category]");
+
+const clearProductFilters =
+    document.getElementById("clearProductFilters");
+
+const clearProductFiltersFallback =
+    document.getElementById("clearProductFiltersFallback");
+
+const resourceList = document.getElementById("resourceList");
+const resourceSearch = document.getElementById("resourceSearch");
+const resourceCount = document.getElementById("resourceCount");
+const resourceEmpty = document.getElementById("resourceEmpty");
+const resourceMessage = document.getElementById("resourceMessage");
+
+const resourceFilterButtons =
+    document.querySelectorAll("[data-resource-category]");
+
+const clearResourceFilters =
+    document.getElementById("clearResourceFilters");
+
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
+const saveSubmissionCheckbox = document.getElementById("saveSubmission");
+const messageCount = document.getElementById("messageCount");
+const selectedPlanInput = document.getElementById("selectedPlan");
+const pricingMessage = document.getElementById("pricingMessage");
+
+const fields = {
+    name: document.getElementById("customerName"),
+    email: document.getElementById("customerEmail"),
+    phone: document.getElementById("customerPhone"),
+    subject: document.getElementById("customerSubject"),
+    message: document.getElementById("customerMessage")
+};
+
+const errorElements = {
+    name: document.getElementById("nameError"),
+    email: document.getElementById("emailError"),
+    phone: document.getElementById("phoneError"),
+    subject: document.getElementById("subjectError"),
+    message: document.getElementById("messageError")
+};
+
 let activeProductCategory = "All";
 let activeResourceCategory = "All";
+let currentPage = 1;
 let toastTimer = null;
+let productLoadController = null;
 
 
-// ========================================
-// 5. COMMON HELPER FUNCTIONS
-// ========================================
-
-// Display a temporary notification.
+/* =========================================
+   5. COMMON HELPERS
+========================================= */
 
 function showToast(message) {
     if (!toast) {
@@ -156,25 +226,36 @@ function showToast(message) {
 
     toastTimer = window.setTimeout(function () {
         toast.classList.remove("show");
-    }, 3200);
+    }, 3000);
 }
 
 
-// Read JSON data from Local Storage.
+function setFeedback(element, message, type = "") {
+    if (!element) {
+        return;
+    }
+
+    element.textContent = message;
+    element.classList.remove("success", "error");
+
+    if (type) {
+        element.classList.add(type);
+    }
+}
+
 
 function safeReadJSON(key, fallbackValue) {
     try {
-        const storedValue = localStorage.getItem(key);
+        const value = localStorage.getItem(key);
 
-        if (storedValue === null) {
+        if (value === null) {
             return fallbackValue;
         }
 
-        return JSON.parse(storedValue);
-
+        return JSON.parse(value);
     } catch (error) {
         console.warn(
-            "Could not read saved demo data:",
+            "Could not read localStorage data:",
             error.message
         );
 
@@ -183,20 +264,13 @@ function safeReadJSON(key, fallbackValue) {
 }
 
 
-// Convert JavaScript data into JSON and save it.
-
 function safeWriteJSON(key, value) {
     try {
-        localStorage.setItem(
-            key,
-            JSON.stringify(value)
-        );
-
+        localStorage.setItem(key, JSON.stringify(value));
         return true;
-
     } catch (error) {
         console.warn(
-            "Could not save demo data:",
+            "Could not write localStorage data:",
             error.message
         );
 
@@ -205,27 +279,28 @@ function safeWriteJSON(key, value) {
 }
 
 
-// Display success or error messages.
-
-function setFeedback(element, message, type) {
-    if (!element) {
-        return;
-    }
-
-    element.textContent = message;
-
-    element.classList.remove(
-        "success",
-        "error"
+function isValidPlainObject(value) {
+    return (
+        value !== null &&
+        typeof value === "object" &&
+        !Array.isArray(value)
     );
-
-    if (type) {
-        element.classList.add(type);
-    }
 }
 
 
-// Close the mobile navigation menu.
+function prefersReducedMotion() {
+    return (
+        typeof window.matchMedia === "function" &&
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches
+    );
+}
+
+
+/* =========================================
+   6. MOBILE NAVIGATION
+========================================= */
 
 function closeMobileMenu() {
     if (mainNav) {
@@ -233,11 +308,7 @@ function closeMobileMenu() {
     }
 
     if (menuToggle) {
-        menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
-        );
-
+        menuToggle.setAttribute("aria-expanded", "false");
         menuToggle.setAttribute(
             "aria-label",
             "Open navigation menu"
@@ -248,194 +319,43 @@ function closeMobileMenu() {
 }
 
 
-// ========================================
-// 6. PAGE NAVIGATION
-// ========================================
-
-function openPage(pageId, options = {}) {
-
-    const targetId = pageIds.includes(pageId)
-        ? pageId
-        : "home";
-
-    const targetPage = document.getElementById(targetId);
-
-    if (!targetPage) {
-        console.error(
-            "Requested page is missing:",
-            targetId
-        );
-
+function toggleMobileMenu() {
+    if (!mainNav || !menuToggle) {
         return;
     }
 
-    // Show the selected page and hide the others.
+    const willOpen = !mainNav.classList.contains("open");
 
-    pages.forEach(function (page) {
-        const isActive = page.id === targetId;
+    mainNav.classList.toggle("open", willOpen);
 
-        page.classList.toggle(
-            "active",
-            isActive
-        );
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(willOpen)
+    );
 
-        page.hidden = !isActive;
+    menuToggle.setAttribute(
+        "aria-label",
+        willOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+    );
 
-        page.setAttribute(
-            "aria-hidden",
-            String(!isActive)
-        );
-    });
-
-    // Update the active navigation link.
-
-    navLinks.forEach(function (link) {
-        const isActive = link.dataset.page === targetId;
-
-        link.classList.toggle(
-            "active-link",
-            isActive
-        );
-
-        if (isActive && link.closest("nav")) {
-            link.setAttribute(
-                "aria-current",
-                "page"
-            );
-        } else {
-            link.removeAttribute("aria-current");
-        }
-    });
-
-    closeMobileMenu();
-
-    // Update browser tab title.
-
-    document.title =
-        `Shopifive | ${targetPage.dataset.title || "Build and Grow"}`;
-
-    // Update the URL.
-
-    if (options.updateHistory) {
-        const nextUrl = `#${targetId}`;
-
-        if (window.location.hash !== nextUrl) {
-            window.history.pushState(
-                { page: targetId },
-                "",
-                nextUrl
-            );
-        }
-    }
-
-    // Scroll to the top.
-
-    if (options.scroll !== false) {
-        const reduceMotion = window.matchMedia(
-            "(prefers-reduced-motion: reduce)"
-        ).matches;
-
-        window.scrollTo({
-            top: 0,
-            behavior: reduceMotion ? "auto" : "smooth"
-        });
-    }
+    document.body.classList.toggle("menu-open", willOpen);
 }
 
 
-// Navigate to a page.
-
-function navigateTo(pageId) {
-    if (!pageIds.includes(pageId)) {
-        showToast("That section is not available.");
-        return;
-    }
-
-    openPage(pageId, {
-        updateHistory: true
-    });
+if (menuToggle) {
+    menuToggle.addEventListener("click", toggleMobileMenu);
 }
 
-
-// ========================================
-// 7. NAVIGATION EVENTS
-// ========================================
-
-// Main navigation links.
-
-navLinks.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-        const pageId = link.dataset.page;
-
-        if (!pageIds.includes(pageId)) {
-            return;
-        }
-
-        event.preventDefault();
-
-        navigateTo(pageId);
-    });
-});
-
-
-// Buttons that navigate to another section.
-
-goButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-        navigateTo(button.dataset.go);
-    });
-});
-
-
-// Open and close the mobile menu.
-
-if (menuToggle && mainNav) {
-    menuToggle.addEventListener("click", function () {
-        const willOpen = !mainNav.classList.contains("open");
-
-        mainNav.classList.toggle(
-            "open",
-            willOpen
-        );
-
-        menuToggle.setAttribute(
-            "aria-expanded",
-            String(willOpen)
-        );
-
-        menuToggle.setAttribute(
-            "aria-label",
-            willOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
-        );
-
-        document.body.classList.toggle(
-            "menu-open",
-            willOpen
-        );
-    });
-}
-
-
-// Close the mobile menu when Escape is pressed.
 
 document.addEventListener("keydown", function (event) {
-    if (
-        event.key === "Escape" &&
-        mainNav &&
-        mainNav.classList.contains("open")
-    ) {
+    if (event.key === "Escape" && mainNav?.classList.contains("open")) {
         closeMobileMenu();
-
-        if (menuToggle) {
-            menuToggle.focus();
-        }
+        menuToggle?.focus();
     }
 });
 
-
-// Close the mobile menu when clicking outside.
 
 document.addEventListener("click", function (event) {
     if (
@@ -450,7 +370,98 @@ document.addEventListener("click", function (event) {
 });
 
 
-// Support the browser Back button.
+/* =========================================
+   7. PAGE NAVIGATION
+========================================= */
+
+function openPage(pageId, options = {}) {
+    const targetId = pageIds.includes(pageId)
+        ? pageId
+        : "home";
+
+    const targetPage = document.getElementById(targetId);
+
+    if (!targetPage) {
+        console.error("Page not found:", targetId);
+        return;
+    }
+
+    pages.forEach(function (page) {
+        const isActive = page.id === targetId;
+
+        page.classList.toggle("active", isActive);
+        page.hidden = !isActive;
+        page.setAttribute("aria-hidden", String(!isActive));
+    });
+
+    navLinks.forEach(function (link) {
+        const isActive = link.dataset.page === targetId;
+
+        link.classList.toggle("active-link", isActive);
+
+        if (isActive && link.closest("nav")) {
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.removeAttribute("aria-current");
+        }
+    });
+
+    document.title =
+        `Shopifive | ${targetPage.dataset.title || "Build and Grow"}`;
+
+    closeMobileMenu();
+
+    if (options.updateHistory) {
+        const nextUrl = `#${targetId}`;
+
+        if (window.location.hash !== nextUrl) {
+            window.history.pushState(
+                { page: targetId },
+                "",
+                nextUrl
+            );
+        }
+    }
+
+    if (options.scroll !== false) {
+        window.scrollTo({
+            top: 0,
+            behavior: prefersReducedMotion() ? "auto" : "smooth"
+        });
+    }
+}
+
+
+function navigateTo(pageId) {
+    if (!pageIds.includes(pageId)) {
+        showToast("That section is not available.");
+        return;
+    }
+
+    openPage(pageId, { updateHistory: true });
+}
+
+
+navLinks.forEach(function (link) {
+    link.addEventListener("click", function (event) {
+        const pageId = link.dataset.page;
+
+        if (!pageIds.includes(pageId)) {
+            return;
+        }
+
+        event.preventDefault();
+        navigateTo(pageId);
+    });
+});
+
+
+goButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        navigateTo(button.dataset.go);
+    });
+});
+
 
 window.addEventListener("popstate", function () {
     openPage(
@@ -459,8 +470,6 @@ window.addEventListener("popstate", function () {
     );
 });
 
-
-// Support direct hash changes.
 
 window.addEventListener("hashchange", function () {
     const hashPage = window.location.hash.slice(1);
@@ -471,154 +480,78 @@ window.addEventListener("hashchange", function () {
 
     const targetPage = document.getElementById(hashPage);
 
-    if (
-        targetPage &&
-        !targetPage.classList.contains("active")
-    ) {
-        openPage(hashPage, {
-            scroll: false
-        });
+    if (targetPage && !targetPage.classList.contains("active")) {
+        openPage(hashPage, { scroll: false });
     }
 });
 
 
-// ========================================
-// 8. HOME PAGE ACTION
-// ========================================
+/* =========================================
+   8. HOME PAGE ACTION
+========================================= */
 
-const startTrialBtn =
-    document.getElementById("startTrialBtn");
+const startTrialBtn = document.getElementById("startTrialBtn");
+const heroMessage = document.getElementById("heroMessage");
 
 if (startTrialBtn) {
     startTrialBtn.addEventListener("click", function () {
-        const heroMessage =
-            document.getElementById("heroMessage");
-
-        if (heroMessage) {
-            heroMessage.textContent =
-                "Welcome to Shopifive. Choose a demo plan to continue.";
-        }
+        setFeedback(
+            heroMessage,
+            "Choose a demo plan to explore the available options."
+        );
 
         navigateTo("pricing");
     });
 }
 
 
-// ========================================
-// 9. PRODUCT CATALOGUE
-// ========================================
-
-const productList =
-    document.getElementById("productList");
-
-const productCount =
-    document.getElementById("productCount");
-
-const productSearch =
-    document.getElementById("productSearch");
-
-const productSort =
-    document.getElementById("productSort");
-
-const productEmpty =
-    document.getElementById("productEmpty");
-
-const productsPerPage = 6;
-
-let currentPage = 1;
-
-const pagination =
-    document.getElementById("pagination");
-
-const prevPage =
-    document.getElementById("prevPage");
-
-const nextPage =
-    document.getElementById("nextPage");
-
-const pageNumbers =
-    document.getElementById("pageNumbers");
-
-const clearProductFilters =
-    document.getElementById("clearProductFilters");
-
-const productFilterButtons =
-    document.querySelectorAll("[data-category]");
-
-
-// Create a product card.
+/* =========================================
+   9. PRODUCT CATALOGUE
+========================================= */
 
 function createProductCard(product) {
     const card = document.createElement("article");
-
     card.className = "product-card";
 
-    // Product card top.
-
     const top = document.createElement("div");
-
     top.className = "product-card-top";
 
-    // Product icon.
-
     const icon = document.createElement("span");
-
     icon.className = "product-icon";
-
     icon.setAttribute("aria-hidden", "true");
-
-    icon.textContent = product.icon;
-
-    // Product category.
+    icon.textContent = product.icon || "▧";
 
     const category = document.createElement("span");
-
     category.className = "product-category";
-
     category.textContent = product.category;
 
     top.append(icon, category);
 
-    // Product name.
-
     const title = document.createElement("h3");
-
     title.textContent = product.name;
 
-    // Product description.
-
     const description = document.createElement("p");
-
     description.textContent = product.description;
 
-    // Price and button container.
-
     const bottom = document.createElement("div");
-
     bottom.className = "product-card-bottom";
 
-    // Product price.
-
     const price = document.createElement("span");
-
     price.className = "product-price";
 
-    price.textContent = `₹${product.price}`;
+    price.append(
+        document.createTextNode(
+            `₹${Number(product.price).toLocaleString("en-IN")}`
+        )
+    );
 
-    const pricePeriod = document.createElement("small");
-
-    pricePeriod.textContent = " / month";
-
-    price.appendChild(pricePeriod);
-
-    // Select product button.
+    const period = document.createElement("small");
+    period.textContent = " / month";
+    price.appendChild(period);
 
     const selectButton = document.createElement("button");
-
     selectButton.type = "button";
-
     selectButton.className = "product-select";
-
     selectButton.textContent = "Select tool";
 
     selectButton.addEventListener("click", function () {
@@ -627,25 +560,22 @@ function createProductCard(product) {
 
     bottom.append(price, selectButton);
 
-    card.append(
-        top,
-        title,
-        description,
-        bottom
-    );
+    card.append(top, title, description, bottom);
 
     return card;
 }
 
-
-// Search, filter, and sort products.
 
 function getVisibleProducts() {
     const query = productSearch
         ? productSearch.value.trim().toLowerCase()
         : "";
 
-    let visibleProducts = products.filter(function (product) {
+    const sortMode = productSort
+        ? productSort.value
+        : "featured";
+
+    const visibleProducts = products.filter(function (product) {
         const matchesCategory =
             activeProductCategory === "All" ||
             product.category === activeProductCategory;
@@ -660,42 +590,25 @@ function getVisibleProducts() {
         );
     });
 
-    // Copy the array before sorting.
-
-    visibleProducts = visibleProducts.slice();
-
-    // Sort products.
-
-    const sortMode = productSort
-        ? productSort.value
-        : "featured";
-
-    if (sortMode === "price-low") {
-        visibleProducts.sort(function (a, b) {
+    visibleProducts.sort(function (a, b) {
+        if (sortMode === "price-low") {
             return a.price - b.price;
-        });
+        }
 
-    } else if (sortMode === "price-high") {
-        visibleProducts.sort(function (a, b) {
+        if (sortMode === "price-high") {
             return b.price - a.price;
-        });
+        }
 
-    } else if (sortMode === "name") {
-        visibleProducts.sort(function (a, b) {
+        if (sortMode === "name") {
             return a.name.localeCompare(b.name);
-        });
+        }
 
-    } else {
-        visibleProducts.sort(function (a, b) {
-            return a.featured - b.featured;
-        });
-    }
+        return a.featured - b.featured;
+    });
 
     return visibleProducts;
 }
 
-
-// Display products using pagination.
 
 function renderProducts() {
     if (!productList) {
@@ -705,45 +618,29 @@ function renderProducts() {
     const visibleProducts = getVisibleProducts();
 
     const totalPages = Math.ceil(
-        visibleProducts.length / productsPerPage
+        visibleProducts.length / PRODUCTS_PER_PAGE
     );
 
-    // Keep the current page within the valid range.
-
-    if (currentPage > totalPages) {
-        currentPage = Math.max(1, totalPages);
-    }
-
-    if (currentPage < 1) {
-        currentPage = 1;
-    }
-
-    // Calculate product indexes.
+    currentPage = Math.min(
+        Math.max(1, currentPage),
+        Math.max(1, totalPages)
+    );
 
     const startIndex =
-        (currentPage - 1) * productsPerPage;
-
-    const endIndex =
-        startIndex + productsPerPage;
+        (currentPage - 1) * PRODUCTS_PER_PAGE;
 
     const paginatedProducts = visibleProducts.slice(
         startIndex,
-        endIndex
+        startIndex + PRODUCTS_PER_PAGE
     );
 
-    // Clear previously displayed products.
-
-    productList.replaceChildren();
-
-    // Display products for the current page.
+    const fragment = document.createDocumentFragment();
 
     paginatedProducts.forEach(function (product) {
-        productList.appendChild(
-            createProductCard(product)
-        );
+        fragment.appendChild(createProductCard(product));
     });
 
-    // Update the product count.
+    productList.replaceChildren(fragment);
 
     if (productCount) {
         productCount.textContent =
@@ -754,23 +651,15 @@ function renderProducts() {
             } found`;
     }
 
-    // Display the empty state.
-
     if (productEmpty) {
-        productEmpty.hidden =
-            visibleProducts.length !== 0;
+        productEmpty.hidden = visibleProducts.length !== 0;
     }
 
-    productList.hidden =
-        visibleProducts.length === 0;
-
-    // Update pagination.
+    productList.hidden = visibleProducts.length === 0;
 
     renderPagination(totalPages);
 }
 
-
-// Create pagination buttons.
 
 function renderPagination(totalPages) {
     if (!pagination || !pageNumbers) {
@@ -778,7 +667,6 @@ function renderPagination(totalPages) {
     }
 
     pagination.hidden = totalPages <= 1;
-
     pageNumbers.replaceChildren();
 
     if (prevPage) {
@@ -791,82 +679,73 @@ function renderPagination(totalPages) {
             currentPage >= totalPages || totalPages === 0;
     }
 
+    const fragment = document.createDocumentFragment();
+
     for (let page = 1; page <= totalPages; page++) {
         const button = document.createElement("button");
 
         button.type = "button";
-
-        button.textContent = page;
-
-        button.classList.toggle(
-            "active",
-            page === currentPage
+        button.textContent = String(page);
+        button.setAttribute(
+            "aria-label",
+            `Go to product page ${page}`
         );
 
-        if (page === currentPage) {
-            button.setAttribute(
-                "aria-current",
-                "page"
-            );
+        const isCurrentPage = page === currentPage;
+
+        button.classList.toggle("active", isCurrentPage);
+
+        if (isCurrentPage) {
+            button.setAttribute("aria-current", "page");
         }
 
         button.addEventListener("click", function () {
             currentPage = page;
-
             renderProducts();
 
             productList.scrollIntoView({
-                behavior: "smooth",
+                behavior: prefersReducedMotion() ? "auto" : "smooth",
                 block: "start"
             });
         });
 
-        pageNumbers.appendChild(button);
+        fragment.appendChild(button);
     }
+
+    pageNumbers.appendChild(fragment);
 }
 
-
-// Previous page.
 
 if (prevPage) {
     prevPage.addEventListener("click", function () {
         if (currentPage > 1) {
             currentPage--;
-
             renderProducts();
         }
     });
 }
 
-
-// Next page.
 
 if (nextPage) {
     nextPage.addEventListener("click", function () {
         const totalPages = Math.ceil(
-            getVisibleProducts().length / productsPerPage
+            getVisibleProducts().length / PRODUCTS_PER_PAGE
         );
 
         if (currentPage < totalPages) {
             currentPage++;
-
             renderProducts();
         }
     });
 }
 
-
-// Update category buttons.
 
 function updateProductFilterButtons() {
     productFilterButtons.forEach(function (button) {
         const isActive =
             button.dataset.category === activeProductCategory;
 
-        button.classList.toggle(
-            "active",
-            isActive
-        );
+        button.classList.toggle("active", isActive);
 
         button.setAttribute(
             "aria-pressed",
@@ -875,8 +754,6 @@ function updateProductFilterButtons() {
     });
 }
 
-
-// Reset product filters.
 
 function resetProductFilters() {
     if (productSearch) {
@@ -888,60 +765,42 @@ function resetProductFilters() {
     }
 
     activeProductCategory = "All";
-
     currentPage = 1;
 
     updateProductFilterButtons();
-
     renderProducts();
-
     savePreferences();
 }
 
 
-// Product search.
-
 if (productSearch) {
     productSearch.addEventListener("input", function () {
         currentPage = 1;
-
         renderProducts();
     });
 }
 
-
-// Product sorting.
 
 if (productSort) {
     productSort.addEventListener("change", function () {
         currentPage = 1;
-
         renderProducts();
-
         savePreferences();
     });
 }
 
 
-// Product category filtering.
-
 productFilterButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-        activeProductCategory =
-            button.dataset.category;
-
+        activeProductCategory = button.dataset.category;
         currentPage = 1;
 
         updateProductFilterButtons();
-
         renderProducts();
-
         savePreferences();
     });
 });
 
-
-// Clear product filters.
 
 if (clearProductFilters) {
     clearProductFilters.addEventListener(
@@ -951,81 +810,59 @@ if (clearProductFilters) {
 }
 
 
-// Select a product and prepare the contact form.
+if (clearProductFiltersFallback) {
+    clearProductFiltersFallback.addEventListener(
+        "click",
+        resetProductFilters
+    );
+}
+
+
+/* =========================================
+   10. PRODUCT SELECTION
+========================================= */
 
 function selectProduct(productId) {
-    const selectedProduct = products.find(function (product) {
-        return product.id === productId;
+    const product = products.find(function (item) {
+        return item.id === productId;
     });
 
-    if (!selectedProduct) {
-        showToast(
-            "We could not find that tool. Please try again."
-        );
-
+    if (!product) {
+        showToast("We could not find that tool. Please try again.");
         return;
     }
 
-    const subject =
-        document.getElementById("customerSubject");
-
-    const message =
-        document.getElementById("customerMessage");
-
-    if (subject) {
-        subject.value = "Products";
+    if (fields.subject) {
+        fields.subject.value = "Products";
     }
 
-    if (message) {
-        message.value =
-            `I would like to learn more about ${selectedProduct.name}.`;
+    if (fields.message) {
+        fields.message.value =
+            `I would like to learn more about ${product.name}.`;
+    }
+
+    if (selectedPlanInput) {
+        selectedPlanInput.value = "";
     }
 
     updateMessageCount();
 
     navigateTo("contact");
 
-    const customerName =
-        document.getElementById("customerName");
+    fields.name?.focus({ preventScroll: true });
 
-    if (customerName) {
-        customerName.focus({
-            preventScroll: true
-        });
-    }
-
-    showToast(
-        `${selectedProduct.name} added to your enquiry.`
-    );
+    showToast(`${product.name} added to your enquiry.`);
 }
 
 
-// ========================================
-// 10. PRICING AND PLAN SELECTION
-// ========================================
+/* =========================================
+   11. PRICING AND PLAN SELECTION
+========================================= */
 
-const pricingMessage =
-    document.getElementById("pricingMessage");
+const validPlans = ["Starter", "Growth", "Pro"];
 
-const selectedPlanInput =
-    document.getElementById("selectedPlan");
-
-const customerSubjectInput =
-    document.getElementById("customerSubject");
-
-const customerMessageInput =
-    document.getElementById("customerMessage");
-
-
-// Select a plan.
 
 function choosePlan(planName) {
-    const validPlans = [
-        "Starter",
-        "Growth",
-        "Pro"
-    ];
-
     if (!validPlans.includes(planName)) {
         setFeedback(
             pricingMessage,
@@ -1040,12 +877,12 @@ function choosePlan(planName) {
         selectedPlanInput.value = planName;
     }
 
-    if (customerSubjectInput) {
-        customerSubjectInput.value = "Pricing";
+    if (fields.subject) {
+        fields.subject.value = "Pricing";
     }
 
-    if (customerMessageInput) {
-        customerMessageInput.value =
+    if (fields.message) {
+        fields.message.value =
             `I would like to know more about the ${planName} plan.`;
     }
 
@@ -1053,26 +890,17 @@ function choosePlan(planName) {
 
     setFeedback(
         pricingMessage,
-        `${planName} selected. Your contact form has been prepared.`,
+        `${planName} selected. Your contact form is ready.`,
         "success"
     );
 
     navigateTo("contact");
 
-    const customerName =
-        document.getElementById("customerName");
-
-    if (customerName) {
-        customerName.focus({
-            preventScroll: true
-        });
-    }
+    fields.name?.focus({ preventScroll: true });
 
     showToast(`${planName} plan selected.`);
 }
 
-
-// Pricing page plan buttons.
 
 document.querySelectorAll("[data-plan]").forEach(function (button) {
     button.addEventListener("click", function () {
@@ -1081,8 +909,6 @@ document.querySelectorAll("[data-plan]").forEach(function (button) {
 });
 
 
-// Solution page plan buttons.
-
 document.querySelectorAll("[data-plan-select]").forEach(function (button) {
     button.addEventListener("click", function () {
         choosePlan(button.dataset.planSelect);
@@ -1090,103 +916,58 @@ document.querySelectorAll("[data-plan-select]").forEach(function (button) {
 });
 
 
-// ========================================
-// 11. RESOURCE LIBRARY
-// ========================================
-
-const resourceList =
-    document.getElementById("resourceList");
-
-const resourceSearch =
-    document.getElementById("resourceSearch");
-
-const resourceCount =
-    document.getElementById("resourceCount");
-
-const resourceEmpty =
-    document.getElementById("resourceEmpty");
-
-const resourceMessage =
-    document.getElementById("resourceMessage");
-
-const resourceFilterButtons =
-    document.querySelectorAll("[data-resource-category]");
-
-
-// Create a resource card.
+/* =========================================
+   12. RESOURCE LIBRARY
+========================================= */
 
 function createResourceCard(resource) {
     const card = document.createElement("article");
-
     card.className = "resource-card";
 
     const top = document.createElement("div");
-
     top.className = "resource-card-top";
 
     const icon = document.createElement("span");
-
     icon.className = "feature-icon";
-
     icon.setAttribute("aria-hidden", "true");
-
     icon.textContent = resource.icon;
 
-    const type = document.createElement("span");
+    const category = document.createElement("span");
+    category.className = "resource-type";
+    category.textContent = resource.category;
 
-    type.className = "resource-type";
-
-    type.textContent = resource.category;
-
-    top.append(icon, type);
+    top.append(icon, category);
 
     const title = document.createElement("h3");
-
     title.textContent = resource.title;
 
     const description = document.createElement("p");
-
     description.textContent = resource.description;
 
     const time = document.createElement("p");
-
     time.className = "resource-type";
-
     time.textContent = resource.readTime;
 
     const button = document.createElement("button");
-
     button.type = "button";
-
     button.className = "text-link";
-
     button.textContent = "Open resource →";
 
     button.addEventListener("click", function () {
         setFeedback(
             resourceMessage,
-            `${resource.title} is a sample resource in this frontend demo.`,
+            `"${resource.title}" is sample content in this frontend demo.`,
             ""
         );
 
-        showToast(
-            "This demo resource does not link to a full article yet."
-        );
+        showToast("This demo resource does not link to a full article yet.");
     });
 
-    card.append(
-        top,
-        title,
-        description,
-        time,
-        button
-    );
+    card.append(top, title, description, time, button);
 
     return card;
 }
 
-
-// Search and filter resources.
 
 function renderResources() {
     if (!resourceList) {
@@ -1212,13 +993,13 @@ function renderResources() {
         );
     });
 
-    resourceList.replaceChildren();
+    const fragment = document.createDocumentFragment();
 
     visibleResources.forEach(function (resource) {
-        resourceList.appendChild(
-            createResourceCard(resource)
-        );
+        fragment.appendChild(createResourceCard(resource));
     });
+
+    resourceList.replaceChildren(fragment);
 
     if (resourceCount) {
         resourceCount.textContent =
@@ -1226,30 +1007,23 @@ function renderResources() {
                 visibleResources.length === 1
                     ? "resource"
                     : "resources"
-            }`;
+            } found`;
     }
 
     if (resourceEmpty) {
-        resourceEmpty.hidden =
-            visibleResources.length !== 0;
+        resourceEmpty.hidden = visibleResources.length !== 0;
     }
 
-    resourceList.hidden =
-        visibleResources.length === 0;
+    resourceList.hidden = visibleResources.length === 0;
 }
 
-
-// Update resource category buttons.
 
 function updateResourceFilterButtons() {
     resourceFilterButtons.forEach(function (button) {
         const isActive =
             button.dataset.resourceCategory === activeResourceCategory;
 
-        button.classList.toggle(
-            "active",
-            isActive
-        );
+        button.classList.toggle("active", isActive);
 
         button.setAttribute(
             "aria-pressed",
@@ -1258,8 +1032,6 @@ function updateResourceFilterButtons() {
     });
 }
 
-
-// Reset resource filters.
 
 function resetResourceFilters() {
     if (resourceSearch) {
@@ -1270,48 +1042,28 @@ function resetResourceFilters() {
 
     updateResourceFilterButtons();
 
-    setFeedback(
-        resourceMessage,
-        "",
-        ""
-    );
+    setFeedback(resourceMessage, "");
 
     renderResources();
-
     savePreferences();
 }
 
 
-// Resource search.
-
 if (resourceSearch) {
-    resourceSearch.addEventListener(
-        "input",
-        renderResources
-    );
+    resourceSearch.addEventListener("input", renderResources);
 }
 
 
-// Resource category filtering.
-
 resourceFilterButtons.forEach(function (button) {
     button.addEventListener("click", function () {
-        activeResourceCategory =
-            button.dataset.resourceCategory;
+        activeResourceCategory = button.dataset.resourceCategory;
 
         updateResourceFilterButtons();
-
         renderResources();
-
         savePreferences();
     });
 });
 
-
-// Clear resource filters.
-
-const clearResourceFilters =
-    document.getElementById("clearResourceFilters");
 
 if (clearResourceFilters) {
     clearResourceFilters.addEventListener(
@@ -1321,46 +1073,12 @@ if (clearResourceFilters) {
 }
 
 
-// ========================================
-// 12. CONTACT FORM ELEMENTS
-// ========================================
-
-const contactForm =
-    document.getElementById("contactForm");
-
-const formMessage =
-    document.getElementById("formMessage");
-
-const saveSubmissionCheckbox =
-    document.getElementById("saveSubmission");
-
-const messageCount =
-    document.getElementById("messageCount");
-
-const fields = {
-    name: document.getElementById("customerName"),
-    email: document.getElementById("customerEmail"),
-    phone: document.getElementById("customerPhone"),
-    subject: document.getElementById("customerSubject"),
-    message: document.getElementById("customerMessage")
-};
-
-const errorElements = {
-    name: document.getElementById("nameError"),
-    email: document.getElementById("emailError"),
-    phone: document.getElementById("phoneError"),
-    subject: document.getElementById("subjectError"),
-    message: document.getElementById("messageError")
-};
-
-
-// ========================================
-// 13. FORM FIELD ERROR HANDLING
-// ========================================
+/* =========================================
+   13. CONTACT FORM FIELD ERRORS
+========================================= */
 
 function setFieldError(fieldName, message) {
     const field = fields[fieldName];
-
     const errorElement = errorElements[fieldName];
 
     if (!field || !errorElement) {
@@ -1370,42 +1088,71 @@ function setFieldError(fieldName, message) {
     errorElement.textContent = message;
 
     if (message) {
-        field.setAttribute(
-            "aria-invalid",
-            "true"
-        );
+        field.setAttribute("aria-invalid", "true");
     } else {
         field.removeAttribute("aria-invalid");
     }
 }
 
 
-// ========================================
-// 14. CONTACT FORM VALIDATION
-// ========================================
+function clearAllFieldErrors() {
+    Object.keys(errorElements).forEach(function (fieldName) {
+        setFieldError(fieldName, "");
+    });
+}
+
+
+function updateMessageCount() {
+    if (!messageCount || !fields.message) {
+        return;
+    }
+
+    messageCount.textContent =
+        `${fields.message.value.length} / 2000`;
+}
+
+
+Object.keys(fields).forEach(function (fieldName) {
+    const field = fields[fieldName];
+
+    if (!field) {
+        return;
+    }
+
+    field.addEventListener("input", function () {
+        if (field.getAttribute("aria-invalid") === "true") {
+            setFieldError(fieldName, "");
+        }
+
+        if (fieldName === "message") {
+            updateMessageCount();
+        }
+    });
+
+    field.addEventListener("change", function () {
+        if (field.getAttribute("aria-invalid") === "true") {
+            setFieldError(fieldName, "");
+        }
+    });
+});
+
+
+/* =========================================
+   14. CONTACT FORM VALIDATION
+========================================= */
 
 function validateContactForm() {
     let isValid = true;
 
-    // Clear previous errors.
+    clearAllFieldErrors();
 
-    Object.keys(errorElements).forEach(function (fieldName) {
-        setFieldError(fieldName, "");
-    });
+    const name = fields.name?.value.trim() || "";
+    const email = fields.email?.value.trim() || "";
+    const phone = fields.phone?.value.trim() || "";
+    const subject = fields.subject?.value || "";
+    const message = fields.message?.value.trim() || "";
 
-    // Read form values.
-
-    const name = fields.name.value.trim();
-
-    const email = fields.email.value.trim();
-
-    const phone = fields.phone.value.trim();
-
-    const subject = fields.subject.value;
-
-    const message = fields.message.value.trim();
-
-    // Validate name.
+    // Name validation.
 
     if (name.length < 2) {
         setFieldError(
@@ -1414,7 +1161,6 @@ function validateContactForm() {
         );
 
         isValid = false;
-
     } else if (name.length > 80) {
         setFieldError(
             "name",
@@ -1424,12 +1170,14 @@ function validateContactForm() {
         isValid = false;
     }
 
-    // Validate email.
+    // Email validation.
 
-    const emailPattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailPattern.test(email)) {
+    if (
+        email.length > 254 ||
+        !emailPattern.test(email)
+    ) {
         setFieldError(
             "email",
             "Enter a valid email address."
@@ -1438,7 +1186,7 @@ function validateContactForm() {
         isValid = false;
     }
 
-    // Validate optional phone number.
+    // Optional phone validation.
 
     if (
         phone &&
@@ -1452,7 +1200,7 @@ function validateContactForm() {
         isValid = false;
     }
 
-    // Validate subject.
+    // Subject validation.
 
     const validSubjects = [
         "Products",
@@ -1471,7 +1219,7 @@ function validateContactForm() {
         isValid = false;
     }
 
-    // Validate message.
+    // Message validation.
 
     if (message.length < 10) {
         setFieldError(
@@ -1480,7 +1228,6 @@ function validateContactForm() {
         );
 
         isValid = false;
-
     } else if (message.length > 2000) {
         setFieldError(
             "message",
@@ -1494,322 +1241,124 @@ function validateContactForm() {
 }
 
 
-// ========================================
-// 15. MESSAGE CHARACTER COUNTER
-// ========================================
-
-function updateMessageCount() {
-    if (!messageCount || !fields.message) {
-        return;
-    }
-
-    messageCount.textContent =
-        `${fields.message.value.length} / 2000`;
-}
-
-
-// Message input event.
-
-if (fields.message) {
-    fields.message.addEventListener("input", function () {
-        updateMessageCount();
-
-        if (
-            fields.message.getAttribute("aria-invalid") === "true"
-        ) {
-            setFieldError("message", "");
-        }
-    });
-}
-
-
-// Clear field errors when the user edits a field.
-
-Object.keys(fields).forEach(function (fieldName) {
-    const field = fields[fieldName];
-
-    if (!field) {
-        return;
-    }
-
-    field.addEventListener("input", function () {
-        if (
-            fieldName !== "message" &&
-            field.getAttribute("aria-invalid") === "true"
-        ) {
-            setFieldError(fieldName, "");
-        }
-    });
-
-    field.addEventListener("change", function () {
-        if (
-            field.getAttribute("aria-invalid") === "true"
-        ) {
-            setFieldError(fieldName, "");
-        }
-    });
-});
-
-
-// ========================================
-// 16. CONTACT FORM SUBMISSION
-// ========================================
+/* =========================================
+   15. CONTACT FORM SUBMISSION
+========================================= */
 
 if (contactForm) {
     contactForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        setFeedback(
-            formMessage,
-            "",
-            ""
-        );
+        setFeedback(formMessage, "");
 
-        try {
-            // Validate form.
+        if (!validateContactForm()) {
+            setFeedback(
+                formMessage,
+                "Please correct the highlighted fields and try again.",
+                "error"
+            );
 
-            if (!validateContactForm()) {
+            const firstInvalid =
+                contactForm.querySelector('[aria-invalid="true"]');
+
+            firstInvalid?.focus();
+
+            return;
+        }
+
+        const contactDetails = {
+            id:
+                typeof crypto !== "undefined" &&
+                typeof crypto.randomUUID === "function"
+                    ? crypto.randomUUID()
+                    : `${Date.now()}-${Math.random()
+                        .toString(16)
+                        .slice(2)}`,
+
+            name: fields.name.value.trim(),
+            email: fields.email.value.trim(),
+            phone: fields.phone.value.trim(),
+            subject: fields.subject.value,
+            plan: selectedPlanInput
+                ? selectedPlanInput.value
+                : "",
+            message: fields.message.value.trim(),
+            submittedAt: new Date().toISOString()
+        };
+
+        if (saveSubmissionCheckbox?.checked) {
+            const savedSubmissions = safeReadJSON(
+                STORAGE_KEYS.submissions,
+                []
+            );
+
+            if (!Array.isArray(savedSubmissions)) {
                 setFeedback(
                     formMessage,
-                    "Please correct the highlighted fields and try again.",
+                    "Saved browser data is invalid. Clear the saved demo data and try again.",
                     "error"
                 );
-
-                const firstInvalid =
-                    contactForm.querySelector(
-                        '[aria-invalid="true"]'
-                    );
-
-                if (firstInvalid) {
-                    firstInvalid.focus();
-                }
 
                 return;
             }
 
-            // Create the submission object.
+            // Limit saved entries to avoid unbounded localStorage growth.
 
-            const contactDetails = {
-                id:
-                    window.crypto &&
-                    typeof window.crypto.randomUUID === "function"
-                        ? window.crypto.randomUUID()
-                        : `${Date.now()}-${Math.random()
-                            .toString(16)
-                            .slice(2)}`,
+            const updatedSubmissions = [
+                ...savedSubmissions,
+                contactDetails
+            ].slice(-MAX_SUBMISSIONS);
 
-                name: fields.name.value.trim(),
+            const saved = safeWriteJSON(
+                STORAGE_KEYS.submissions,
+                updatedSubmissions
+            );
 
-                email: fields.email.value.trim(),
-
-                phone: fields.phone.value.trim(),
-
-                subject: fields.subject.value,
-
-                plan: selectedPlanInput
-                    ? selectedPlanInput.value
-                    : "",
-
-                message: fields.message.value.trim(),
-
-                submittedAt: new Date().toISOString()
-            };
-
-            // Save only when the checkbox is selected.
-
-            if (
-                saveSubmissionCheckbox &&
-                saveSubmissionCheckbox.checked
-            ) {
-                const savedSubmissions = safeReadJSON(
-                    STORAGE_KEYS.submissions,
-                    []
-                );
-
-                if (!Array.isArray(savedSubmissions)) {
-                    throw new Error(
-                        "Saved demo data is not in the expected format."
-                    );
-                }
-
-                savedSubmissions.push(contactDetails);
-
-                const saved = safeWriteJSON(
-                    STORAGE_KEYS.submissions,
-                    savedSubmissions
-                );
-
-                if (!saved) {
-                    throw new Error(
-                        "The browser could not save this submission. Check your browser storage settings."
-                    );
-                }
-
+            if (!saved) {
                 setFeedback(
                     formMessage,
-                    `Thanks, ${contactDetails.name}. Your demo submission was saved in this browser. No email was sent.`,
-                    "success"
+                    "Your browser could not save this submission. Check your storage settings.",
+                    "error"
                 );
 
-            } else {
-                setFeedback(
-                    formMessage,
-                    `Thanks, ${contactDetails.name}. Your form passed validation. No message was sent to a server.`,
-                    "success"
-                );
+                return;
             }
-
-            showToast(
-                "Contact form validated successfully."
-            );
-
-            // Reset form after successful validation.
-
-            contactForm.reset();
-
-            clearAllFieldErrors();
-
-            updateMessageCount();
-
-        } catch (error) {
-            console.error(
-                "Contact form error:",
-                error
-            );
 
             setFeedback(
                 formMessage,
-                error.message ||
-                    "Something went wrong. Please try again.",
-                "error"
+                `Thanks, ${contactDetails.name}. Your demo submission was saved in this browser. No email was sent.`,
+                "success"
             );
-
-        } finally {
-            console.log(
-                "Contact form processing finished."
+        } else {
+            setFeedback(
+                formMessage,
+                `Thanks, ${contactDetails.name}. Your form passed validation. No message was sent to a server.`,
+                "success"
             );
         }
+
+        showToast("Contact form validated successfully.");
+
+        contactForm.reset();
+
+        clearAllFieldErrors();
+        updateMessageCount();
     });
-}
 
 
-// ========================================
-// 17. CLEAR FORM ERRORS
-// ========================================
-
-function clearAllFieldErrors() {
-    Object.keys(errorElements).forEach(function (fieldName) {
-        setFieldError(fieldName, "");
-    });
-}
-
-
-// Reset form event.
-
-if (contactForm) {
     contactForm.addEventListener("reset", function () {
         window.setTimeout(function () {
             clearAllFieldErrors();
-
-            setFeedback(
-                formMessage,
-                "",
-                ""
-            );
-
+            setFeedback(formMessage, "");
             updateMessageCount();
         }, 0);
     });
 }
 
 
-// ========================================
-// 18. RESTORE SAVED PREFERENCES
-// ========================================
-
-function restorePreferences() {
-    const preferences = safeReadJSON(
-        STORAGE_KEYS.preferences,
-        {}
-    );
-
-    if (
-        !preferences ||
-        typeof preferences !== "object" ||
-        Array.isArray(preferences)
-    ) {
-        return;
-    }
-
-    // Restore product category.
-
-    if (typeof preferences.productCategory === "string") {
-        const validCategories = [
-            "All",
-            "Marketing",
-            "Store",
-            "Analytics"
-        ];
-
-        if (
-            validCategories.includes(
-                preferences.productCategory
-            )
-        ) {
-            activeProductCategory =
-                preferences.productCategory;
-
-            updateProductFilterButtons();
-        }
-    }
-
-    // Restore resource category.
-
-    if (typeof preferences.resourceCategory === "string") {
-        const validCategories = [
-            "All",
-            "Learning",
-            "Support",
-            "Stories"
-        ];
-
-        if (
-            validCategories.includes(
-                preferences.resourceCategory
-            )
-        ) {
-            activeResourceCategory =
-                preferences.resourceCategory;
-
-            updateResourceFilterButtons();
-        }
-    }
-
-    // Restore product sorting preference.
-
-    if (
-        productSort &&
-        typeof preferences.productSort === "string" &&
-        [
-            "featured",
-            "price-low",
-            "price-high",
-            "name"
-        ].includes(preferences.productSort)
-    ) {
-        productSort.value = preferences.productSort;
-    }
-
-    // Render resources immediately.
-    // Products will render after the API finishes loading.
-
-    renderResources();
-}
-
-
-// ========================================
-// 19. SAVE PREFERENCES
-// ========================================
+/* =========================================
+   16. PREFERENCES
+========================================= */
 
 function savePreferences() {
     const preferences = {
@@ -1827,186 +1376,242 @@ function savePreferences() {
 }
 
 
-// ========================================
-// 20. FETCH PRODUCTS FROM DUMMYJSON API
-// ========================================
+function restorePreferences() {
+    const preferences = safeReadJSON(
+        STORAGE_KEYS.preferences,
+        {}
+    );
+
+    if (!isValidPlainObject(preferences)) {
+        return;
+    }
+
+    const validProductCategories = [
+        "All",
+        "Marketing",
+        "Store",
+        "Analytics"
+    ];
+
+    const validResourceCategories = [
+        "All",
+        "Learning",
+        "Support",
+        "Stories"
+    ];
+
+    const validSortModes = [
+        "featured",
+        "price-low",
+        "price-high",
+        "name"
+    ];
+
+    if (
+        validProductCategories.includes(
+            preferences.productCategory
+        )
+    ) {
+        activeProductCategory = preferences.productCategory;
+    }
+
+    if (
+        validResourceCategories.includes(
+            preferences.resourceCategory
+        )
+    ) {
+        activeResourceCategory = preferences.resourceCategory;
+    }
+
+    if (
+        productSort &&
+        validSortModes.includes(preferences.productSort)
+    ) {
+        productSort.value = preferences.productSort;
+    }
+
+    updateProductFilterButtons();
+    updateResourceFilterButtons();
+}
+
+
+/* =========================================
+   17. LOAD PRODUCTS FROM API
+========================================= */
+
+function mapApiProduct(item, index) {
+    const apiCategory = String(
+        item.category || ""
+    ).toLowerCase();
+
+    let category = "Store";
+
+    if (
+        [
+            "beauty",
+            "fragrances",
+            "skin-care",
+            "makeup"
+        ].some(function (value) {
+            return apiCategory.includes(value);
+        })
+    ) {
+        category = "Marketing";
+    } else if (
+        [
+            "laptops",
+            "smartphones",
+            "tablets",
+            "mobile-accessories"
+        ].includes(apiCategory)
+    ) {
+        category = "Analytics";
+    }
+
+    const rawPrice = Number(item.price);
+
+    if (
+        !Number.isFinite(rawPrice) ||
+        rawPrice < 0 ||
+        !item.title ||
+        !item.description
+    ) {
+        return null;
+    }
+
+    return {
+        id: `api-${item.id}`,
+        name: String(item.title),
+        description: String(item.description),
+        price: Math.round(rawPrice * 85),
+        category: category,
+        icon: "🛍️",
+        featured: index + 1
+    };
+}
+
 
 async function loadProductsFromAPI() {
-    const productGrid =
-        document.getElementById("productList");
-
-    const countElement =
-        document.getElementById("productCount");
-
-    // Hide the product area until the API responds.
-
-    if (productGrid) {
-        productGrid.style.visibility = "hidden";
-    }
-
-    if (countElement) {
-        countElement.hidden = true;
-    }
-
-    try {
-        console.log("Loading products from API...");
-
-        // Fetch products.
-
-        const response = await fetch(
-            "https://dummyjson.com/products?limit=30"
+    if (typeof fetch !== "function") {
+        console.info(
+            "Fetch is unavailable. Using local products."
         );
 
-        // Check response.
+        return;
+    }
+
+    if (productLoadController) {
+        productLoadController.abort();
+    }
+
+    productLoadController = new AbortController();
+
+    try {
+        const response = await fetch(API_URL, {
+            signal: productLoadController.signal
+        });
 
         if (!response.ok) {
             throw new Error(
-                `HTTP Error: ${response.status}`
+                `API request failed with status ${response.status}.`
             );
         }
-
-        // Convert JSON into JavaScript data.
 
         const data = await response.json();
 
-        // Validate API data.
-
-        if (!Array.isArray(data.products)) {
+        if (!data || !Array.isArray(data.products)) {
             throw new Error(
-                "Invalid product data received from API."
+                "The API returned an unexpected response."
             );
         }
 
-        // Convert API products into the website format.
+        const apiProducts = data.products
+            .map(mapApiProduct)
+            .filter(Boolean);
 
-        products = data.products.map(function (item, index) {
-            const apiCategory = String(
-                item.category || ""
-            ).toLowerCase();
+        if (apiProducts.length === 0) {
+            throw new Error(
+                "The API did not return any valid products."
+            );
+        }
 
-            let demoCategory = "Store";
-
-            if (
-                [
-                    "beauty",
-                    "fragrances",
-                    "skin-care",
-                    "makeup"
-                ].some(function (category) {
-                    return apiCategory.includes(category);
-                })
-            ) {
-                demoCategory = "Marketing";
-
-            } else if (
-                [
-                    "laptops",
-                    "smartphones",
-                    "tablets",
-                    "mobile-accessories"
-                ].includes(apiCategory)
-            ) {
-                demoCategory = "Analytics";
-            }
-
-            return {
-                id: item.id,
-                name: item.title,
-                description: item.description,
-                price: Math.round(Number(item.price) * 85),
-                category: demoCategory,
-                icon: "🛍️",
-                featured: index + 1
-            };
-        });
-
-        // Reset pagination.
-
+        products = apiProducts;
         currentPage = 1;
-
-        // Render API products.
 
         renderProducts();
 
-        if (countElement) {
-            countElement.hidden = false;
+        // Do not show a toast every time the page loads.
+        console.info(
+            `${products.length} API demo products loaded.`
+        );
+    } catch (error) {
+        if (error.name === "AbortError") {
+            return;
         }
 
-        console.log(
-            "Products loaded successfully:",
-            products
-        );
-
-        showToast(
-            `${products.length} demo products loaded from API.`
-        );
-
-    } catch (error) {
-        console.error(
-            "Failed to load products:",
+        console.warn(
+            "Could not load API products. Using local products instead:",
             error.message
         );
 
-        // Use local products if the API fails.
-
+        products = localProducts.slice();
         currentPage = 1;
 
         renderProducts();
-
-        if (countElement) {
-            countElement.hidden = false;
-        }
-
-        showToast(
-            "Could not load API products. Showing local products."
-        );
-
     } finally {
-        // Show the product area after rendering.
-
-        if (productGrid) {
-            productGrid.style.visibility = "visible";
-        }
-
-        console.log(
-            "Product loading process completed."
-        );
+        productLoadController = null;
     }
 }
 
 
-// ========================================
-// 21. INITIALISE THE WEBSITE
-// ========================================
+/* =========================================
+   18. INITIALISE WEBSITE
+========================================= */
 
-// Restore saved preferences before loading products.
+function initialiseWebsite() {
+    // Restore preferences first.
 
-restorePreferences();
+    restorePreferences();
 
-// Set the initial character count.
+    // Display local products immediately.
 
-updateMessageCount();
+    renderProducts();
 
-// Open the correct page.
+    // Render resources.
 
-const initialPage = window.location.hash.slice(1);
+    renderResources();
 
-openPage(
-    pageIds.includes(initialPage)
-        ? initialPage
-        : "home",
-    { scroll: false }
-);
+    // Update the contact message counter.
 
-// Load products from the API.
-// The function displays local products if the API fails.
+    updateMessageCount();
 
-loadProductsFromAPI();
+    // Display the current year.
 
-// Feature Practice
+    const currentYear = document.getElementById("currentYear");
 
-function showMessage() {
-    console.log("My first Git branch is working!");
+    if (currentYear) {
+        currentYear.textContent = String(
+            new Date().getFullYear()
+        );
+    }
+
+    // Open the page specified in the URL hash.
+
+    const initialPage = window.location.hash.slice(1);
+
+    openPage(
+        pageIds.includes(initialPage)
+            ? initialPage
+            : "home",
+        { scroll: false }
+    );
+
+    // Load API products in the background.
+
+    loadProductsFromAPI();
+
+    console.info("Shopifive initialised successfully.");
 }
 
-showMessage();
+
+initialiseWebsite();

@@ -1,292 +1,1070 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#11140e">
-  <meta name="description" content="Build your online store, manage payments, explore ecommerce solutions, compare pricing plans and grow your business with Shopifive.">
-  <title>Shopifive | Build and Grow Your Online </title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Shopifive helps businesses explore ecommerce tools, marketing solutions, and sales analytics."
+    >
+
+    <meta name="theme-color" content="#101c16">
+
+    <title>Shopifive | Build and Grow</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
+
 <body>
-  <a class="skip-link" href="#mainContent">Skip to content</a>
 
-  <header class="site-header">
-    <a href="#home" class="logo" data-page="home" aria-label="Shopifive home">
-      <span class="logo-mark">S</span><span>Shopifive</span>
-    </a>
-    <button class="menu-toggle" id="menuToggle" type="button"
-      aria-label="Open navigation menu" aria-controls="mainNav" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <!-- ================= HEADER ================= -->
 
+    <header class="site-header">
+        <div class="container header-inner">
 
-    <nav id="mainNav" class="main-nav" aria-label="Main navigation">
-      <a href="#home" data-page="home">Home</a>
-      <a href="#products" data-page="products">Products</a>
-      <a href="#solutions" data-page="solutions">Solutions</a>
-      <a href="#pricing" data-page="pricing">Pricing</a>
-      <a href="#resources" data-page="resources">Resources</a>
-      <a href="#contact" data-page="contact">Contact</a>
-    </nav>
+            <a href="#home" class="logo" data-page="home" aria-label="Shopifive home">
+                <span class="logo-mark">S</span>
+                <span>shopifive<span class="logo-dot">.</span></span>
+            </a>
 
-    <button class="button button-primary header-cta" type="button" data-go="contact">Get started <span aria-hidden="true">↗</span></button>
-  </header>
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                type="button"
+                aria-label="Open navigation menu"
+                aria-controls="mainNav"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-  <main id="mainContent">
-    <!-- HOME -->
-    <section class="page active" id="home" data-title="Home" aria-labelledby="homeTitle">
-      <section class="hero">
-        <div class="hero-glow hero-glow-one"></div>
-        <div class="hero-glow hero-glow-two"></div>
-        <div class="hero-content container">
-          <p class="eyebrow"><span class="status-dot"></span> YOUR BUSINESS. YOUR GROWTH.</p>
-          <h1 id="homeTitle">Build your business.<br><span>Make it grow.</span></h1>
-          <p class="hero-copy">Start, grow, and manage your business with powerful tools built for modern commerce.</p>
-          <div class="hero-actions">
-            <button class="button button-primary button-large" id="startTrialBtn" type="button">Start free trial <span aria-hidden="true">→</span></button>
-            <button class="button button-ghost button-large" type="button" data-go="products">Explore the platform</button>
-          </div>
-          <p id="heroMessage" class="inline-message" aria-live="polite"></p>
-          <div class="hero-proof"><span class="proof-stars" aria-hidden="true">★★★★★</span><span>One simple place to manage your commerce journey</span></div>
+            <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+                <a href="#home" data-page="home">Home</a>
+                <a href="#products" data-page="products">Products</a>
+                <a href="#solutions" data-page="solutions">Solutions</a>
+                <a href="#pricing" data-page="pricing">Pricing</a>
+                <a href="#resources" data-page="resources">Resources</a>
+            </nav>
+
+            <a href="#contact" class="header-cta" data-page="contact">
+                Get in touch <span aria-hidden="true">↗</span>
+            </a>
+
         </div>
-        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
-        <div class="hero-floating-card floating-card-one"><span class="mini-icon">↗</span><span><strong>Ready to grow</strong><small>Your next step starts here</small></span></div>
-        <div class="hero-floating-card floating-card-two"><span class="mini-icon mini-icon-dark">✓</span><span><strong>All in one place</strong><small>Tools that work together</small></span></div>
-      </section>
+    </header>
 
-      <section class="section container">
-        <div class="section-heading">
-          <p class="eyebrow">MADE FOR YOUR BUSINESS</p>
-          <h2>Everything you need to <span class="accent-text">move forward.</span></h2>
-          <p>Bring your store, operations, and growth tools together in one simple workspace.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <div class="card-icon">↗</div><span class="card-number">01 / SELL</span>
-            <h3>Sell online</h3><p>Create a customer-friendly online store and showcase your products with confidence.</p>
-            <button class="text-link" type="button" data-go="products">Explore products <span aria-hidden="true">→</span></button>
-          </article>
-          <article class="feature-card">
-            <div class="card-icon">▦</div><span class="card-number">02 / MANAGE</span>
-            <h3>Manage your business</h3><p>Keep important store tools, customer activity, and operations organised.</p>
-            <button class="text-link" type="button" data-go="solutions">Explore solutions <span aria-hidden="true">→</span></button>
-          </article>
-          <article class="feature-card">
-            <div class="card-icon">✳</div><span class="card-number">03 / GROW</span>
-            <h3>Grow your brand</h3><p>Discover marketing, analytics, and resources that help you make better decisions.</p>
-            <button class="text-link" type="button" data-go="resources">Explore resources <span aria-hidden="true">→</span></button>
-          </article>
-        </div>
-      </section>
 
-      <section class="stats-band">
-        <div class="container stats-grid">
-          <div><strong>01</strong><span>Connected workspace</span></div>
-          <div><strong>02</strong><span>Simple ways to sell</span></div>
-          <div><strong>03</strong><span>Tools for growth</span></div>
-          <div><strong>∞</strong><span>Room to build</span></div>
-        </div>
-      </section>
+    <main>
 
-      <section class="cta-panel container">
-        <div><p class="eyebrow">YOUR NEXT CHAPTER</p><h2>Ready to grow your business?</h2><p>Find the tools and plan that match your goals.</p></div>
-        <button class="button button-dark" type="button" data-go="pricing">Compare plans <span aria-hidden="true">→</span></button>
-      </section>
-    </section>
+        <!-- ================= HOME PAGE ================= -->
 
-    <!-- PRODUCTS -->
-    <section class="page" id="products" data-title="Products" aria-labelledby="productsTitle" hidden>
-      <section class="page-banner">
+        <section class="page active" id="home" data-title="Build and Grow">
+
+            <div class="hero-section">
+                <div class="container hero-grid">
+
+                    <div class="hero-content">
+
+                        <span class="eyebrow">
+                            <span class="status-dot"></span>
+                            YOUR BUSINESS, SIMPLIFIED
+                        </span>
+
+                        <h1>
+                            Build smarter.<br>
+                            Grow <span class="highlight">faster.</span>
+                        </h1>
+
+                        <p class="hero-description">
+                            Discover practical tools for ecommerce,
+                            marketing, and analytics—all designed to
+                            help your business move forward.
+                        </p>
+
+                        <div class="hero-actions">
+                            <button
+                                class="button button-primary"
+                                id="startTrialBtn"
+                                type="button"
+                            >
+                                Explore plans <span aria-hidden="true">↗</span>
+                            </button>
+
+                            <button
+                                class="button button-secondary"
+                                type="button"
+                                data-go="products"
+                            >
+                                Explore tools
+                            </button>
+                        </div>
+
+                        <p class="hero-note">
+                            Explore the demo. Find what works for you.
+                        </p>
+
+                        <p
+                            id="heroMessage"
+                            class="feedback"
+                            role="status"
+                            aria-live="polite"
+                        ></p>
+
+                    </div>
+
+
+                    <div class="hero-visual">
+
+                        <div class="visual-glow"></div>
+
+                        <div class="dashboard-card">
+
+                            <div class="dashboard-header">
+                                <div>
+                                    <span class="muted-label">OVERVIEW</span>
+                                    <h3>Business dashboard</h3>
+                                </div>
+
+                                <span class="dashboard-icon">↗</span>
+                            </div>
+
+                            <div class="dashboard-stat">
+                                <span>Sample revenue</span>
+                                <strong>₹84,500</strong>
+                                <small>Illustrative demo data</small>
+                            </div>
+
+                            <div class="chart-container" aria-label="Decorative sample growth chart">
+                                <div class="chart-grid">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+
+                                <svg
+                                    class="growth-chart"
+                                    viewBox="0 0 420 160"
+                                    role="img"
+                                    aria-label="Illustrative upward trend"
+                                >
+                                    <defs>
+                                        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="0%" stop-color="#a5e8a9" stop-opacity=".45"/>
+                                            <stop offset="100%" stop-color="#a5e8a9" stop-opacity="0"/>
+                                        </linearGradient>
+                                    </defs>
+
+                                    <path
+                                        d="M0 135 C40 125 50 100 90 112 S145 78 180 90 S240 42 275 65 S330 25 360 42 S395 10 420 12 L420 160 L0 160 Z"
+                                        fill="url(#chartGradient)"
+                                    />
+
+                                    <path
+                                        d="M0 135 C40 125 50 100 90 112 S145 78 180 90 S240 42 275 65 S330 25 360 42 S395 10 420 12"
+                                        fill="none"
+                                        stroke="#76cf86"
+                                        stroke-width="4"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+
+                            <div class="dashboard-footer">
+                                <div>
+                                    <span class="mini-dot green-dot"></span>
+                                    <span>Orders</span>
+                                </div>
+
+                                <div>
+                                    <span class="mini-dot blue-dot"></span>
+                                    <span>Visitors</span>
+                                </div>
+
+                                <div>
+                                    <span class="mini-dot orange-dot"></span>
+                                    <span>Sales</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="floating-card floating-card-top">
+                            <span class="floating-icon">✦</span>
+                            <div>
+                                <strong>Work smarter</strong>
+                                <small>One step at a time</small>
+                            </div>
+                        </div>
+
+                        <div class="floating-card floating-card-bottom">
+                            <span class="floating-icon">↗</span>
+                            <div>
+                                <strong>Keep growing</strong>
+                                <small>Track your progress</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- FEATURE SECTION -->
+
+            <section class="section">
+                <div class="container">
+
+                    <div class="section-heading">
+                        <span class="eyebrow">MADE FOR YOUR NEXT STEP</span>
+
+                        <h2>Everything you need to<br>move your business forward.</h2>
+
+                        <p>
+                            Explore practical tools that help you organize,
+                            understand, and grow your business.
+                        </p>
+                    </div>
+
+                    <div class="feature-grid">
+
+                        <article class="feature-card">
+                            <div class="feature-icon">✉</div>
+                            <h3>Marketing tools</h3>
+                            <p>
+                                Organize campaigns, reach customers,
+                                and improve your communication.
+                            </p>
+                            <button
+                                type="button"
+                                class="text-link"
+                                data-go="products"
+                            >
+                                Explore marketing <span>→</span>
+                            </button>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-icon">▧</div>
+                            <h3>Store solutions</h3>
+                            <p>
+                                Plan your storefront, manage offers,
+                                and create better shopping experiences.
+                            </p>
+                            <button
+                                type="button"
+                                class="text-link"
+                                data-go="solutions"
+                            >
+                                Explore solutions <span>→</span>
+                            </button>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-icon">↗</div>
+                            <h3>Business insights</h3>
+                            <p>
+                                Review performance and discover useful
+                                patterns in your business data.
+                            </p>
+                            <button
+                                type="button"
+                                class="text-link"
+                                data-go="products"
+                            >
+                                Explore analytics <span>→</span>
+                            </button>
+                        </article>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <!-- CTA SECTION -->
+
+            <section class="section section-compact">
+                <div class="container">
+                    <div class="cta-panel">
+
+                        <div>
+                            <span class="eyebrow">READY WHEN YOU ARE</span>
+                            <h2>Your next step starts here.</h2>
+                            <p>
+                                Explore the available plans and find a
+                                starting point for your business.
+                            </p>
+                        </div>
+
+                        <button
+                            class="button button-light"
+                            type="button"
+                            data-go="pricing"
+                        >
+                            View pricing <span>↗</span>
+                        </button>
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+
+
+        <!-- ================= PRODUCTS PAGE ================= -->
+
+        <section class="page" id="products" data-title="Products">
+
+            <div class="page-banner">
+                <div class="container">
+
+                    <span class="eyebrow">THE TOOLKIT</span>
+
+                    <h1>Tools for your next big idea.</h1>
+
+                    <p>
+                        Explore the demo catalogue and find tools
+                        that match your business needs.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <section class="section">
+                <div class="container">
+
+                    <div class="catalogue-toolbar">
+
+                        <div class="search-box">
+                            <span aria-hidden="true">⌕</span>
+
+                            <input
+                                type="search"
+                                id="productSearch"
+                                placeholder="Search tools..."
+                                aria-label="Search products"
+                                autocomplete="off"
+                            >
+                        </div>
+
+                        <label class="sort-control">
+                            <span>Sort by</span>
+
+                            <select id="productSort">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to high</option>
+                                <option value="price-high">Price: High to low</option>
+                                <option value="name">Name: A to Z</option>
+                            </select>
+                        </label>
+
+                    </div>
+
+
+                    <div class="filter-row" aria-label="Filter products by category">
+
+                        <button type="button" class="filter-button active" data-category="All" aria-pressed="true">
+                            All tools
+                        </button>
+
+                        <button type="button" class="filter-button" data-category="Marketing" aria-pressed="false">
+                            Marketing
+                        </button>
+
+                        <button type="button" class="filter-button" data-category="Store" aria-pressed="false">
+                            Store
+                        </button>
+
+                        <button type="button" class="filter-button" data-category="Analytics" aria-pressed="false">
+                            Analytics
+                        </button>
+
+                        <button type="button" class="text-link clear-filter" id="clearProductFilters">
+                            Clear filters
+                        </button>
+
+                    </div>
+
+
+                    <div class="catalogue-status">
+                        <p id="productCount" aria-live="polite">6 tools available</p>
+                    </div>
+
+
+                    <div class="product-grid" id="productList"></div>
+
+
+                    <div class="empty-state" id="productEmpty" hidden>
+                        <div class="empty-icon">⌕</div>
+                        <h3>No matching tools found</h3>
+                        <p>Try a different search term or category.</p>
+
+                        <button
+                            type="button"
+                            class="button button-primary"
+                            id="clearProductFiltersFallback"
+                        >
+                            Reset filters
+                        </button>
+                    </div>
+
+
+                    <nav
+                        class="pagination"
+                        id="pagination"
+                        aria-label="Product pagination"
+                        hidden
+                    >
+                        <button
+                            type="button"
+                            id="prevPage"
+                            class="pagination-arrow"
+                        >
+                            ← Previous
+                        </button>
+
+                        <div id="pageNumbers" class="page-numbers"></div>
+
+                        <button
+                            type="button"
+                            id="nextPage"
+                            class="pagination-arrow"
+                        >
+                            Next →
+                        </button>
+                    </nav>
+
+                </div>
+            </section>
+
+        </section>
+
+
+        <!-- ================= SOLUTIONS PAGE ================= -->
+
+        <section class="page" id="solutions" data-title="Solutions">
+
+            <div class="page-banner">
+                <div class="container">
+
+                    <span class="eyebrow">SOLUTIONS</span>
+
+                    <h1>A better way to work.</h1>
+
+                    <p>
+                        Start with the essentials and choose the
+                        features that fit your goals.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <section class="section">
+                <div class="container">
+
+                    <div class="section-heading">
+                        <span class="eyebrow">BUILT AROUND YOUR NEEDS</span>
+                        <h2>Choose your direction.</h2>
+                    </div>
+
+                    <div class="solution-grid">
+
+                        <article class="solution-card">
+                            <div class="solution-number">01</div>
+                            <div class="feature-icon">✉</div>
+                            <h3>Reach more customers</h3>
+                            <p>
+                                Explore marketing tools for email campaigns,
+                                promotional messages, and search visibility.
+                            </p>
+                            <button
+                                type="button"
+                                class="button button-secondary"
+                                data-go="products"
+                            >
+                                Explore tools →
+                            </button>
+                        </article>
+
+                        <article class="solution-card">
+                            <div class="solution-number">02</div>
+                            <div class="feature-icon">▧</div>
+                            <h3>Build your store</h3>
+                            <p>
+                                Discover ways to organize products,
+                                plan discounts, and improve your storefront.
+                            </p>
+                            <button
+                                type="button"
+                                class="button button-secondary"
+                                data-go="products"
+                            >
+                                Explore tools →
+                            </button>
+                        </article>
+
+                        <article class="solution-card">
+                            <div class="solution-number">03</div>
+                            <div class="feature-icon">↗</div>
+                            <h3>Understand your results</h3>
+                            <p>
+                                Explore analytics concepts that help
+                                you review business activity and progress.
+                            </p>
+                            <button
+                                type="button"
+                                class="button button-secondary"
+                                data-go="products"
+                            >
+                                Explore tools →
+                            </button>
+                        </article>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+            <section class="section section-compact">
+                <div class="container">
+
+                    <div class="cta-panel">
+                        <div>
+                            <span class="eyebrow">FIND YOUR STARTING POINT</span>
+                            <h2>Start with a plan that fits.</h2>
+                            <p>Explore the demo pricing options.</p>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="button button-light"
+                            data-go="pricing"
+                        >
+                            Compare plans →
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+        </section>
+
+
+        <!-- ================= PRICING PAGE ================= -->
+
+        <section class="page" id="pricing" data-title="Pricing">
+
+            <div class="page-banner">
+                <div class="container">
+
+                    <span class="eyebrow">SIMPLE DEMO PRICING</span>
+
+                    <h1>Find your starting point.</h1>
+
+                    <p>
+                        Compare sample plans and choose the one
+                        you would like to explore.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <section class="section">
+                <div class="container">
+
+                    <div class="pricing-grid">
+
+                        <article class="pricing-card">
+
+                            <span class="plan-label">ESSENTIALS</span>
+
+                            <h2>Starter</h2>
+
+                            <p class="plan-description">
+                                For individuals exploring the basics.
+                            </p>
+
+                            <div class="plan-price">
+                                <strong>₹499</strong>
+                                <span>/ month</span>
+                            </div>
+
+                            <ul class="plan-features">
+                                <li>✓ Essential tools</li>
+                                <li>✓ Basic campaign planning</li>
+                                <li>✓ Standard resources</li>
+                                <li>✓ Email enquiry support</li>
+                            </ul>
+
+                            <button
+                                type="button"
+                                class="button button-secondary button-full"
+                                data-plan="Starter"
+                            >
+                                Choose Starter
+                            </button>
+
+                        </article>
+
+
+                        <article class="pricing-card pricing-card-featured">
+
+                            <span class="popular-badge">POPULAR CHOICE</span>
+
+                            <span class="plan-label">GROWTH</span>
+
+                            <h2>Growth</h2>
+
+                            <p class="plan-description">
+                                For businesses ready to do more.
+                            </p>
+
+                            <div class="plan-price">
+                                <strong>₹999</strong>
+                                <span>/ month</span>
+                            </div>
+
+                            <ul class="plan-features">
+                                <li>✓ Everything in Starter</li>
+                                <li>✓ Expanded marketing tools</li>
+                                <li>✓ Store management features</li>
+                                <li>✓ Additional analytics</li>
+                            </ul>
+
+                            <button
+                                type="button"
+                                class="button button-primary button-full"
+                                data-plan="Growth"
+                            >
+                                Choose Growth
+                            </button>
+
+                        </article>
+
+
+                        <article class="pricing-card">
+
+                            <span class="plan-label">ADVANCED</span>
+
+                            <h2>Pro</h2>
+
+                            <p class="plan-description">
+                                For teams planning their next stage.
+                            </p>
+
+                            <div class="plan-price">
+                                <strong>₹1,999</strong>
+                                <span>/ month</span>
+                            </div>
+
+                            <ul class="plan-features">
+                                <li>✓ Everything in Growth</li>
+                                <li>✓ Advanced demo features</li>
+                                <li>✓ Broader reporting options</li>
+                                <li>✓ Priority enquiry handling</li>
+                            </ul>
+
+                            <button
+                                type="button"
+                                class="button button-secondary button-full"
+                                data-plan="Pro"
+                            >
+                                Choose Pro
+                            </button>
+
+                        </article>
+
+                    </div>
+
+
+                    <p
+                        id="pricingMessage"
+                        class="feedback centered-feedback"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+                    <p class="pricing-disclaimer">
+                        These are illustrative prices for a frontend demo,
+                        not live commercial offers.
+                    </p>
+
+                </div>
+            </section>
+
+        </section>
+
+
+        <!-- ================= RESOURCES PAGE ================= -->
+
+        <section class="page" id="resources" data-title="Resources">
+
+            <div class="page-banner">
+                <div class="container">
+
+                    <span class="eyebrow">THE KNOWLEDGE HUB</span>
+
+                    <h1>Learn something useful.</h1>
+
+                    <p>
+                        Explore sample guides, checklists, and
+                        business stories.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <section class="section">
+                <div class="container">
+
+                    <div class="resource-toolbar">
+
+                        <div class="search-box">
+                            <span aria-hidden="true">⌕</span>
+
+                            <input
+                                type="search"
+                                id="resourceSearch"
+                                placeholder="Search resources..."
+                                aria-label="Search resources"
+                                autocomplete="off"
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="filter-row" aria-label="Filter resources by category">
+
+                        <button type="button" class="filter-button active" data-resource-category="All" aria-pressed="true">
+                            All resources
+                        </button>
+
+                        <button type="button" class="filter-button" data-resource-category="Learning" aria-pressed="false">
+                            Learning
+                        </button>
+
+                        <button type="button" class="filter-button" data-resource-category="Support" aria-pressed="false">
+                            Support
+                        </button>
+
+                        <button type="button" class="filter-button" data-resource-category="Stories" aria-pressed="false">
+                            Stories
+                        </button>
+
+                        <button
+                            type="button"
+                            class="text-link clear-filter"
+                            id="clearResourceFilters"
+                        >
+                            Clear filters
+                        </button>
+
+                    </div>
+
+
+                    <p id="resourceCount" class="catalogue-status" aria-live="polite"></p>
+
+                    <div class="resource-grid" id="resourceList"></div>
+
+                    <div class="empty-state" id="resourceEmpty" hidden>
+                        <div class="empty-icon">⌕</div>
+                        <h3>No matching resources</h3>
+                        <p>Try another search term or category.</p>
+                    </div>
+
+                    <p
+                        id="resourceMessage"
+                        class="feedback"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+                </div>
+            </section>
+
+        </section>
+
+
+        <!-- ================= CONTACT PAGE ================= -->
+
+        <section class="page" id="contact" data-title="Contact">
+
+            <div class="page-banner">
+                <div class="container">
+
+                    <span class="eyebrow">LET'S CONNECT</span>
+
+                    <h1>Tell us what you need.</h1>
+
+                    <p>
+                        Explore a demo enquiry form. Your message will
+                        not be sent to a server.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <section class="section">
+                <div class="container contact-layout">
+
+                    <aside class="contact-sidebar">
+
+                        <span class="eyebrow">GET IN TOUCH</span>
+
+                        <h2>Let's make your next step clearer.</h2>
+
+                        <p>
+                            Select a product or plan, then use the
+                            form to prepare a sample enquiry.
+                        </p>
+
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">✉</span>
+                            <div>
+                                <strong>Product enquiries</strong>
+                                <p>Ask about the tools in this demo.</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail">
+                            <span class="contact-detail-icon">↗</span>
+                            <div>
+                                <strong>Plan enquiries</strong>
+                                <p>Choose a plan to prefill the form.</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-note">
+                            <strong>Demo privacy note</strong>
+                            <p>
+                                The form does not send data to a server.
+                                If you select the save option, your
+                                submission is stored in this browser.
+                            </p>
+                        </div>
+
+                    </aside>
+
+
+                    <div class="contact-form-card">
+
+                        <form id="contactForm" novalidate>
+
+                            <input
+                                type="hidden"
+                                id="selectedPlan"
+                                name="selectedPlan"
+                                value=""
+                            >
+
+                            <div class="form-grid">
+
+                                <div class="form-field">
+                                    <label for="customerName">Full name *</label>
+
+                                    <input
+                                        type="text"
+                                        id="customerName"
+                                        name="name"
+                                        autocomplete="name"
+                                        maxlength="80"
+                                        required
+                                        aria-describedby="nameError"
+                                    >
+
+                                    <small class="field-error" id="nameError"></small>
+                                </div>
+
+
+                                <div class="form-field">
+                                    <label for="customerEmail">Email address *</label>
+
+                                    <input
+                                        type="email"
+                                        id="customerEmail"
+                                        name="email"
+                                        autocomplete="email"
+                                        maxlength="254"
+                                        required
+                                        aria-describedby="emailError"
+                                    >
+
+                                    <small class="field-error" id="emailError"></small>
+                                </div>
+
+
+                                <div class="form-field">
+                                    <label for="customerPhone">Phone number (optional)</label>
+
+                                    <input
+                                        type="tel"
+                                        id="customerPhone"
+                                        name="phone"
+                                        autocomplete="tel"
+                                        maxlength="25"
+                                        aria-describedby="phoneError"
+                                    >
+
+                                    <small class="field-error" id="phoneError"></small>
+                                </div>
+
+
+                                <div class="form-field">
+                                    <label for="customerSubject">Enquiry topic *</label>
+
+                                    <select
+                                        id="customerSubject"
+                                        name="subject"
+                                        required
+                                        aria-describedby="subjectError"
+                                    >
+                                        <option value="">Choose a topic</option>
+                                        <option value="Products">Products</option>
+                                        <option value="Solutions">Solutions</option>
+                                        <option value="Pricing">Pricing</option>
+                                        <option value="Technical Support">Technical Support</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+
+                                    <small class="field-error" id="subjectError"></small>
+                                </div>
+
+
+                                <div class="form-field full-width">
+                                    <label for="customerMessage">Your message *</label>
+
+                                    <textarea
+                                        id="customerMessage"
+                                        name="message"
+                                        rows="5"
+                                        minlength="10"
+                                        maxlength="2000"
+                                        required
+                                        placeholder="Tell us how we can help..."
+                                        aria-describedby="messageError messageCount"
+                                    ></textarea>
+
+                                    <div class="textarea-footer">
+                                        <small class="field-error" id="messageError"></small>
+                                        <small id="messageCount">0 / 2000</small>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <label class="checkbox-label">
+                                <input
+                                    type="checkbox"
+                                    id="saveSubmission"
+                                    name="saveSubmission"
+                                >
+
+                                <span>
+                                    Save my demo submission in this browser.
+                                </span>
+                            </label>
+
+
+                            <button
+                                type="submit"
+                                class="button button-primary button-full"
+                            >
+                                Validate enquiry <span>↗</span>
+                            </button>
+
+
+                            <p
+                                id="formMessage"
+                                class="feedback"
+                                role="status"
+                                aria-live="polite"
+                            ></p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
         <div class="container">
-          <p class="eyebrow">THE SHOPIFIVE TOOLKIT</p>
-          <h1 id="productsTitle">Tools to grow your <span class="accent-text">sales.</span></h1>
-          <p>This is my second version of the project.</p>
-         
+
+            <div class="footer-main">
+
+                <div class="footer-brand">
+
+                    <a href="#home" class="logo footer-logo" data-page="home">
+                        <span class="logo-mark">S</span>
+                        <span>shopifive<span class="logo-dot">.</span></span>
+                    </a>
+
+                    <p>
+                        Practical tools and ideas to help businesses
+                        take their next step.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-column">
+                    <h3>Explore</h3>
+                    <a href="#products" data-page="products">Products</a>
+                    <a href="#solutions" data-page="solutions">Solutions</a>
+                    <a href="#pricing" data-page="pricing">Pricing</a>
+                </div>
+
+
+                <div class="footer-column">
+                    <h3>Discover</h3>
+                    <a href="#resources" data-page="resources">Resources</a>
+                    <a href="#contact" data-page="contact">Contact</a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+                <p>© <span id="currentYear"></span> Shopifive. All rights reserved.</p>
+                <p>Built for learning and demonstration.</p>
+            </div>
+
         </div>
-      </section>
-      <section class="section container">
-        <div class="catalog-toolbar">
-          <div><p class="eyebrow">PRODUCT CATALOGUE</p><h2>Find your next tool</h2></div>
-          <label class="sort-control">Sort by
-            <select id="productSort" aria-label="Sort products">
-              <option value="featured">Featured</option>
-              <option value="price-low">Price: low to high</option>
-              <option value="price-high">Price: high to low</option>
-              <option value="name">Name: A to Z</option>
-            </select>
-          </label>
-        </div>
-        <div class="catalog-controls">
-          <label class="search-control"><span aria-hidden="true">⌕</span><input type="search" id="productSearch" placeholder="Search by name or description..." autocomplete="off" aria-label="Search products"></label>
-          <div class="filter-group" id="productFilters" aria-label="Filter products by category">
-            <button class="filter-chip active" type="button" data-category="All" aria-pressed="true">All tools</button>
-            <button class="filter-chip" type="button" data-category="Marketing" aria-pressed="false">Marketing</button>
-            <button class="filter-chip" type="button" data-category="Store" aria-pressed="false">Store</button>
-            <button class="filter-chip" type="button" data-category="Analytics" aria-pressed="false">Analytics</button>
-          </div>
-        </div>
-        <p class="result-count" id="productCount" hidden></p>
-      
-      
-        <div class="product-grid" id="productList"></div>
 
-<!-- Product Pagination -->
-
-<div class="pagination" id="pagination" hidden>
+    </footer>
 
 
-<button id="prevPage" type="button" disabled>
-    Previous
-</button>
+    <!-- ================= TOAST ================= -->
 
-<div id="pageNumbers"></div>
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+    ></div>
 
-<button id="nextPage" type="button">
-    Next
-</button>
-
-
-</div>
-
-<!-- Empty State -->
-
-<div class="empty-state" id="productEmpty" hidden>
-    <span>⌕</span>
-    <h3>No tools found</h3>
-    <p>Try another search or clear your filters.</p>
-
-
-<button
-    class="button button-dark"
-    id="clearProductFilters"
-    type="button"
->
-    Clear filters
-</button>
-
-
-</div>
-      </section>
-      <section class="cta-panel container"><div><p class="eyebrow">NOT SURE WHERE TO START?</p><h2>Find the right setup for your store.</h2><p>Choose a business type and explore the options available.</p></div><button class="button button-dark" type="button" data-go="solutions">Find a solution <span aria-hidden="true">→</span></button></section>
-    </section>
-
-    <!-- SOLUTIONS -->
-    <section class="page" id="solutions" data-title="Solutions" aria-labelledby="solutionsTitle" hidden>
-      <section class="page-banner">
-        <div class="container">
-          <p class="eyebrow">BUILT AROUND YOUR GOALS</p>
-          <h1 id="solutionsTitle">Solutions for every kind of <span class="accent-text">business.</span></h1>
-          <p>Whether you are launching your first store or growing an established brand, start with what you need.</p>
-          <a class="button button-primary" href="#chooseSolution">Find your solution <span aria-hidden="true">↓</span></a>
-        </div>
-      </section>
-      <section class="section container" id="chooseSolution">
-        <div class="section-heading align-left"><p class="eyebrow">CHOOSE YOUR PATH</p><h2>Where are you in your journey?</h2><p>Pick the option that best describes your business today.</p></div>
-        <div class="solution-grid">
-          <article class="solution-card"><span class="solution-index">01</span><p class="tag">NEW SELLERS</p><h3>Start your store</h3><p>Launch your first online store with a clear setup and the essentials in one place.</p><ul><li>Store setup guidance</li><li>Product catalogue tools</li><li>Simple starting options</li></ul><button class="text-link" type="button" data-plan-select="Starter">Explore Starter <span>→</span></button></article>
-          <article class="solution-card"><span class="solution-index">02</span><p class="tag">GROWING STORES</p><h3>Grow your sales</h3><p>Reach more customers and learn which channels help your business move forward.</p><ul><li>Email and campaign tools</li><li>SEO and visibility tools</li><li>Sales analytics</li></ul><button class="text-link" type="button" data-go="products">Explore tools <span>→</span></button></article>
-          <article class="solution-card"><span class="solution-index">03</span><p class="tag">RETAIL SHOPS</p><h3>Connect online and in-store</h3><p>Keep your store experience organised as you serve customers across channels.</p><ul><li>Inventory planning</li><li>Store operations</li><li>Payment workflow planning</li></ul><button class="text-link" type="button" data-go="contact">Discuss your needs <span>→</span></button></article>
-          <article class="solution-card"><span class="solution-index">04</span><p class="tag">BRANDS AND TEAMS</p><h3>Scale your brand</h3><p>Organise larger catalogues, team workflows, and the next stage of your growth.</p><ul><li>Team roles and workflows</li><li>Wholesale planning</li><li>Growth support options</li></ul><button class="text-link" type="button" data-plan-select="Pro">Explore Pro <span>→</span></button></article>
-        </div>
-      </section>
-      <section class="cta-panel container"><div><p class="eyebrow">LET'S MAKE A PLAN</p><h2>Still deciding?</h2><p>Tell us what you are building and choose a plan to discuss.</p></div><button class="button button-dark" type="button" data-go="contact">Talk to us <span>→</span></button></section>
-    </section>
-
-    <!-- PRICING -->
-    <section class="page" id="pricing" data-title="Pricing" aria-labelledby="pricingTitle" hidden>
-      <section class="page-banner">
-        <div class="container">
-          <p class="eyebrow">CLEAR OPTIONS. ROOM TO GROW.</p>
-          <h1>Simple pricing for <span class="accent-text">every store.</span></h1>
-          <p>Compare the demo plans and choose the option that best fits your business.</p>
-          <div class="banner-meta"><span>Monthly plans</span><span class="meta-divider"></span><span>Choose what fits</span></div>
-        </div>
-      </section>
-      <section class="section container">
-        <div class="pricing-grid">
-          <article class="pricing-card"><p class="tag">FOR BEGINNERS</p><h2>Starter</h2><p class="plan-description">The essentials for getting your store online.</p><p class="price">₹499 <span>/ month</span></p><button class="button button-outline plan-button" type="button" data-plan="Starter">Choose Starter</button><div class="plan-divider"></div><p class="included-title">What's included</p><ul><li>Online store tools</li><li>Up to 50 products</li><li>Payment option planning</li></ul></article>
-          <article class="pricing-card featured-plan"><div class="popular-label">POPULAR CHOICE</div><p class="tag">FOR GROWING STORES</p><h2>Growth</h2><p class="plan-description">More tools for an expanding business.</p><p class="price">₹1,499 <span>/ month</span></p><button class="button button-primary plan-button" type="button" data-plan="Growth">Choose Growth</button><div class="plan-divider"></div><p class="included-title">Everything in Starter, plus</p><ul><li>Unlimited product listings</li><li>Email and SMS tools</li><li>Sales analytics</li></ul></article>
-          <article class="pricing-card"><p class="tag">FOR ESTABLISHED BRANDS</p><h2>Pro</h2><p class="plan-description">Options for teams and larger operations.</p><p class="price">₹3,999 <span>/ month</span></p><button class="button button-outline plan-button" type="button" data-plan="Pro">Choose Pro</button><div class="plan-divider"></div><p class="included-title">Everything in Growth, plus</p><ul><li>Team account options</li><li>Wholesale pricing tools</li><li>Priority support options</li></ul></article>
-        </div>
-        <p class="demo-disclaimer">Demo pricing for this learning project. No payment is collected.</p>
-        <p class="form-feedback" id="pricingMessage" aria-live="polite"></p>
-      </section>
-      <section class="cta-panel container"><div><p class="eyebrow">NEED A HAND?</p><h2>Let's find your best fit.</h2><p>Send a message with your selected plan.</p></div><button class="button button-dark" type="button" data-go="contact">Contact us <span>→</span></button></section>
-    </section>
-
-    <!-- RESOURCES -->
-    <section class="page" id="resources" data-title="Resources" aria-labelledby="resourcesTitle" hidden>
-      <section class="page-banner">
-        <div class="container">
-          <p class="eyebrow">LEARN. APPLY. GROW.</p>
-          <h1>Useful ideas for your <span class="accent-text">next step.</span></h1>
-          <p>Browse learning resources to help you plan, launch, and improve your online store.</p>
-        </div>
-      </section>
-      <section class="section container">
-        <div class="catalog-toolbar"><div><p class="eyebrow">THE RESOURCE LIBRARY</p><h2>Learn at your own pace</h2></div><span class="resource-total" id="resourceCount">4 resources</span></div>
-        <label class="search-control resource-search"><span aria-hidden="true">⌕</span><input type="search" id="resourceSearch" placeholder="Search resources..." aria-label="Search resources"></label>
-        <div class="filter-group resource-filters" id="resourceFilters" aria-label="Filter resources by type">
-          <button class="filter-chip active" type="button" data-resource-category="All" aria-pressed="true">All resources</button>
-          <button class="filter-chip" type="button" data-resource-category="Learning" aria-pressed="false">Learning</button>
-          <button class="filter-chip" type="button" data-resource-category="Support" aria-pressed="false">Support</button>
-          <button class="filter-chip" type="button" data-resource-category="Stories" aria-pressed="false">Stories</button>
-        </div>
-        <div class="resource-grid" id="resourceList"></div>
-        <div class="empty-state" id="resourceEmpty" hidden><span>⌕</span><h3>No resources found</h3><p>Try a different keyword or clear your filters.</p><button class="button button-dark" type="button" id="clearResourceFilters">Clear filters</button></div>
-        <p class="form-feedback" id="resourceMessage" aria-live="polite"></p>
-      </section>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="page" id="contact" data-title="Contact" aria-labelledby="contactTitle" hidden>
-      <section class="page-banner">
-        <div class="container">
-          <p class="eyebrow">LET'S TALK</p>
-          <h1>Tell us what you're <span class="accent-text">building.</span></h1>
-         </div>
-      </section>
-      <section class="section container contact-layout">
-        <aside class="contact-aside">
-          <p class="eyebrow">GET IN TOUCH</p><h2>Good things start with a conversation.</h2><p>Tell us where you are in your business journey and what kind of help you need.</p>
-          <div class="contact-benefit"><span>01</span><div><strong>Product questions</strong><p>Find the tools that match your workflow.</p></div></div>
-          <div class="contact-benefit"><span>02</span><div><strong>Plan guidance</strong><p>Discuss the demo plan you selected.</p></div></div>
-          <div class="contact-benefit"><span>03</span><div><strong>Business goals</strong><p>Describe what you want to improve.</p></div></div>
-       </aside>
-        <form class="contact-form" id="contactForm" novalidate>
-          <div class="form-header"><h2>Send a message</h2><p>Fields marked <span aria-hidden="true">*</span> are required.</p></div>
-          <div class="form-row">
-            <div class="form-group"><label for="customerName">Full name <span>*</span></label><input id="customerName" name="name" type="text" autocomplete="name" placeholder="Your name" minlength="2" maxlength="80" required aria-describedby="nameError"><small class="field-error" id="nameError"></small></div>
-            <div class="form-group"><label for="customerEmail">Email address <span>*</span></label><input id="customerEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com" maxlength="120" required aria-describedby="emailError"><small class="field-error" id="emailError"></small></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label for="customerPhone">Phone number</label><input id="customerPhone" name="phone" type="tel" autocomplete="tel" placeholder="Optional" maxlength="25" aria-describedby="phoneError"><small class="field-error" id="phoneError"></small></div>
-            <div class="form-group"><label for="customerSubject">Topic <span>*</span></label><select id="customerSubject" name="subject" required aria-describedby="subjectError"><option value="">Choose a topic</option><option>Products</option><option>Solutions</option><option>Pricing</option><option>Technical Support</option><option>Other</option></select><small class="field-error" id="subjectError"></small></div>
-          </div>
-          <div class="form-group"><label for="selectedPlan">Selected plan</label><select id="selectedPlan" name="plan"><option value="">No plan selected</option><option>Starter</option><option>Growth</option><option>Pro</option></select></div>
-          <div class="form-group"><label for="customerMessage">Your message <span>*</span></label><textarea id="customerMessage" name="message" rows="5" placeholder="Tell us a little about your goals..." minlength="10" maxlength="2000" required aria-describedby="messageError"></textarea><div class="textarea-meta"><small class="field-error" id="messageError"></small><small id="messageCount">0 / 2000</small></div></div>
-          <label class="checkbox-row"><input type="checkbox" id="saveSubmission"><span>Save this demo submission in this browser using localStorage.</span></label>
-          <p class="privacy-note">Avoid entering sensitive personal information in this demonstration form.</p>
-          <button class="button button-primary submit-button" id="submitButton" type="submit">Validate message <span aria-hidden="true">→</span></button>
-          <button class="button button-outline reset-button" type="reset">Reset form</button>
-          <p class="form-feedback" id="formMessage" role="status" aria-live="polite"></p>
-        </form>
-      </section>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-top">
-      <div><a href="#home" class="logo footer-logo" data-page="home"><span class="logo-mark">S</span><span>Shopifive</span></a><p>Tools to build, manage, and grow your online business.</p></div>
-      <div class="footer-column"><strong>Explore</strong><a href="#products" data-page="products">Products</a><a href="#solutions" data-page="solutions">Solutions</a><a href="#pricing" data-page="pricing">Pricing</a></div>
-      <div class="footer-column"><strong>Learn</strong><a href="#resources" data-page="resources">Resources</a><a href="#contact" data-page="contact">Contact</a><a href="#home" data-page="home">Back to top</a></div>
-    </div>
-    <div class="container footer-bottom"><span>© 2025 Shopifiveeee. All rights reserved.</span></div>
-  </footer>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
-
